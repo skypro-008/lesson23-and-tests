@@ -3,14 +3,9 @@ def fib(n):
     prev = 0
     current = 1
     while index < n:
+        yield prev
+        prev, current = current, prev + current
         index += 1
-        if index < 3:
-            yield index - 1
-            continue
-        res = current + prev
-        prev = current
-        current = res
-        yield res
 
 
 fib_gen = fib(15)

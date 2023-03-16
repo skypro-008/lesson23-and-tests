@@ -11,11 +11,9 @@ class Fib:
     def __next__(self):
         if self.index < self.n:
             self.index += 1
-            if self.index < 3:
-                return self.index - 1
-            res = self.current + self.prev
+            res = self.prev
             self.prev = self.current
-            self.current = res
+            self.current = self.current + res
             return res
         else:
             raise StopIteration
