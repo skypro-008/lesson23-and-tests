@@ -14,7 +14,7 @@ sys.path.append(str(basepath))
 from ttools.skyprotests.tests import SkyproTestCase  # noqa: E402
 
 
-class AverageAgeTestCase(SkyproTestCase):
+class LambdaTestCase(SkyproTestCase):
 
     def setUp(self):
         self.func = foo
@@ -29,7 +29,7 @@ class AverageAgeTestCase(SkyproTestCase):
             "lambda", inspect.getsource(self.func),
             "%@Проверьте, что вы не использовали lambda в вашей функции"
         )
-        
+
         self.assertTrue(
             isinstance(self.func(a=1, b=2), dict),
             "%@Проверьте, что ваша функция возвращает словарь"
@@ -38,8 +38,8 @@ class AverageAgeTestCase(SkyproTestCase):
         try:
             self.func(a=1, b=2, c=4, qwexyz=50, testtest=20)
         except:
-            self.fail("%@Проверьте, что ваша функция может принимать любое количество именованных аргументов")
-
+            self.fail(
+                "%@Проверьте, что ваша функция может принимать любое количество именованных аргументов")
 
 
 if __name__ == "__main__":
